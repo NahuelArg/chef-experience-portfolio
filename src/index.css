@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased; 
+  position:relative;
+  background-color: #f8f5f0;
+  white-space: pre-line; 
+  margin: 0;
+  overflow: auto;
+  height: 100svh;
+  display: block;
+}
+
