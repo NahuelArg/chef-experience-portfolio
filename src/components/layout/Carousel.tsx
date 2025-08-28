@@ -127,7 +127,7 @@ export const Carousel = ({ children, className = "" }: CarouselProps) => {
 
 return (
     <div
-    className={`relative overflow-hidden touch-pan-x ${className}`}
+    className={`relative overflow-hidden  bg-white ${className}`}
     ref={containerRef}
     >
     <motion.div
@@ -148,7 +148,6 @@ return (
         <button
             key={index}
             onClick={() => {
-              /* ...existing code... */
             }}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
             index === currentIndex ? "bg-yellow-400" : "bg-gray-300"

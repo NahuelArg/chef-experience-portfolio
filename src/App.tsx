@@ -15,7 +15,7 @@ function App() {
     // Simular tiempo de carga
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -34,7 +34,7 @@ function App() {
 return (
     <div className="h-screen flex flex-col overflow-hidden bg-white relative">
       <NavBar />
-      <main className="flex-1 lg:ml-[200px] transition-all duration-300">
+<main className="flex-1 min-h-screen bg-white lg:ml-[200px] transition-all duration-300">
         <div className="absolute inset-0 pb-12"> {/* Added padding bottom for footer */}
           <Carousel className="w-full h-full">
             {sections.map(({ id, component }) => (
@@ -45,7 +45,7 @@ return (
           </Carousel>
         </div>
       </main>
-      <Footer className="fixed bottom-0 right-0 left-0 lg:left-[200px]" />
+      <Footer className="fixed bottom-0 right-0 left-0 " />
     </div>
   );
 }

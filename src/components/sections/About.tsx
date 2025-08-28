@@ -2,7 +2,7 @@ import chef from '../../assets/chefsolidario.jpg'
 
 const About = () => {
   return (
-    <section className="w-full min-h-screen flex items-center justify-center bg-[#f8f5f0] p-4 sm:p-6 md:p-8 lg:p-12">
+<section className="w-full min-h-screen flex items-center justify-center bg-white px-4 sm:px-8 md:px-12 py-8">
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-center">
           Sobre Mí

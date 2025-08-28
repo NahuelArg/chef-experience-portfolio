@@ -21,7 +21,6 @@ const Contact = () => {
               </p>
             </div>
           </div>
-          <div className="bg-gray-50 h-48 md:h-auto rounded-lg"></div>
         </div>
       </div>
     </section>
