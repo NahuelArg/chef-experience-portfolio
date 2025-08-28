@@ -6,10 +6,10 @@ const NavBar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   const menuItems = [
-    { id: 'home', label: 'Inicio' },
-    { id: 'about', label: 'Sobre Mí' },
-    { id: 'gallery', label: 'Galería' },
-    { id: 'contact', label: 'Contacto' }
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'contact', label: 'Contact' }
   ];
 
   const handleScroll = () => {
