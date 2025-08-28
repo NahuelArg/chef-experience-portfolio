@@ -47,13 +47,13 @@ const NavBar: React.FC = () => {
   return (
     <>
       {/* Botón de menú móvil */}
-       <button
+      <button
         className="fixed top-4 right-4 z-50 p-2 bg-white/80 rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
-          <FiMenu size={28} />
-           </button>
+        <FiMenu size={28} />
+      </button>
       {/* Barra de navegación con degradado sutil */}
         {isMenuOpen && (
         <div
@@ -91,25 +91,27 @@ const NavBar: React.FC = () => {
 
             {/* Links de navegación */}
             <div className="flex flex-col gap-4 mb-8">
-              {menuItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  whileHover={{ x: 8 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`
-                    text-left text-lg font-medium
-                    ${
-                      activeSection === item.id
-                        ? "text-gray-800"
-                        : "text-gray-500 hover:text-gray-800"
-                    }
-                    transition-colors duration-200
-                  `}
-                >
-                  {item.label}
-                </motion.button>
-              ))}
+              <AnimatePresence>
+                {menuItems.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    whileHover={{ x: 8 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`
+                      text-left text-lg font-medium
+                      ${
+                        activeSection === item.id
+                          ? "text-gray-800"
+                          : "text-gray-500 hover:text-gray-800"
+                      }
+                      transition-colors duration-200
+                    `}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </AnimatePresence>
             </div>
 
             {/* Sol Argentino */}
