@@ -1,6 +1,6 @@
-# Portfolio Chef Personal
+# Chef Experience Portfolio
 
-## Descripción
+## 🎯 Objetivo del Proyecto
 Portfolio web personal para chef profesional, diseñado para mostrar servicios y experiencia culinaria.
 
 ## Características Principales
@@ -59,3 +59,20 @@ src/
 └── assets/
     └── images/
 ```
+
+## 🎯 Estado del Proyecto
+- ✅ Estructura base completada
+- ✅ Navegación y animaciones implementadas
+- ✅ Diseño responsive
+- ⏳ Pendiente contenido del cliente
+
+## Pendientes del Cliente
+- [ ] Fotos profesionales
+  - Foto principal del chef
+  - Fotos de platos destacados
+  - Fotos en acción/trabajando
+- [ ] Contenido textual
+  - Biografía y experiencia
+  - Descripción de servicios
+  - Frases destacadas
+  - Información de contacto

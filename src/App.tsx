@@ -1,31 +1,51 @@
-import FAQ from "./components/sections/FaqSection"
-import Footer from "./components/sections/FooterSection"
-import NavBar from "./components/sections/NavBar"
-import About from "./components/sections/About"
-import Contact from "./components/sections/Contact"
-import Gallery from "./components/sections/GallerySection"
+import { useEffect, useState } from 'react';
+import Footer from "./components/sections/Footer";
+import NavBar from "./components/layout/NavBar";
+import About from "./components/sections/About";
+import Contact from "./components/sections/Contact";
+import Gallery from "./components/sections/GallerySection";
+import Home from "./components/sections/Home";
+import { Carousel } from "./components/layout/Carousel";
+import Loader from "./components/layout/Loader";  
 
 function App() {
-  return (
-    <div className="relative min-h-screen bg-[#f8f5f0]">
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simular tiempo de carga
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const sections = [
+    { id: 'home', component: <Home /> },
+    { id: 'about', component: <About /> },
+    { id: 'gallery', component: <Gallery /> },
+    { id: 'contact', component: <Contact /> },
+  ];
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+return (
+    <div className="h-screen flex flex-col overflow-hidden bg-white relative">
       <NavBar />
-      <main className="w-full min-h-screen lg:pl-[240px] overflow-x-hidden">
-        <section id="about" className="min-h-screen">
-          <About/>
-        </section>
-        <section id="gallery" className="min-h-screen">
-          <Gallery />
-        </section>
-        <section id="contact" className="min-h-screen">
-          <Contact/>
-        </section>
-        <section id="faq" className="min-h-screen">
-          <FAQ />
-        </section>
-        <section id="footer">
-          <Footer />
-        </section>
+      <main className="flex-1 lg:ml-[200px] transition-all duration-300">
+        <div className="absolute inset-0 pb-12"> {/* Added padding bottom for footer */}
+          <Carousel className="w-full h-full">
+            {sections.map(({ id, component }) => (
+              <section key={id} id={id} className="w-full h-full">
+                {component}
+              </section>
+            ))}
+          </Carousel>
+        </div>
       </main>
+      <Footer className="fixed bottom-0 right-0 left-0 lg:left-[200px]" />
     </div>
   );
 }

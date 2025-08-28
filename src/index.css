@@ -3,24 +3,48 @@
 @tailwind utilities;
 
 :root {
-  font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+
+}
+
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+}
+
+@layer utilities {
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
 }
 
 body {
-  -webkit-font-smoothing: antialiased; 
-  position:relative;
   background-color: #f8f5f0;
-  white-space: pre-line; 
+  color: #404040;
   margin: 0;
-  overflow: auto;
-  height: 100svh;
-  display: block;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+.transition-base {
+  transition: all 300ms ease-in-out;
+}
