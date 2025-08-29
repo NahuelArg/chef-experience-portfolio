@@ -1,48 +1,23 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FiMenu, FiX } from "react-icons/fi";
 
+interface NavBarProps {
+  onNavigate: (idx: number) => void;
+}
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const handleMenuClick = () => setIsMenuOpen(!isMenuOpen);
   const handleClose = () => setIsMenuOpen(false);
-
+  const { t, i18n } = useTranslation();
 
   const menuItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "gallery", label: "Gallery" },
-    { id: "contact", label: "Contact" },
+    { idx: 1, label: t("Home") },
+    { idx: 3, label: t("About") },
+    { idx: 5, label: t("Contact") },
   ];
-
-  const handleScroll = () => {
-    const sections = document.querySelectorAll("section[id]");
-    const scrollY = window.scrollY;
-
-    sections.forEach((section) => {
-      const sectionTop = (section as HTMLElement).offsetTop - 100;
-      const sectionHeight = (section as HTMLElement).offsetHeight;
-      const sectionId = section.getAttribute("id") || "";
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        setActiveSection(sectionId);
-      }
-    });
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setActiveSection(sectionId);
-    setIsMenuOpen(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
@@ -55,22 +30,18 @@ const NavBar: React.FC = () => {
         <FiMenu size={28} />
       </button>
       {/* Barra de navegación con degradado sutil */}
-        {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/30 z-40"
-          onClick={handleClose}
-        />
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black/30 z-40" onClick={handleClose} />
       )}
-// ...existing code...
-<nav
-  className={`
+      <nav
+        className={`
     fixed top-0 right-0 h-full w-[220px] bg-white shadow-lg z-50
     transform transition-transform duration-300
     ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
     flex flex-col px-6 py-8 minh-h-fit
   `}
->
-          <button
+      >
+        <button
           className="self-end mb-8"
           onClick={handleClose}
           aria-label="Cerrar menú"
@@ -80,33 +51,43 @@ const NavBar: React.FC = () => {
         <div className="relative w-full px-8 py-8">
           {/* Contenedor principal */}
           <div className="flex flex-col">
+            <div className="flex gap-2 mb-4 justify-end">
+              <button
+                onClick={() => i18n.changeLanguage("es")}
+                className="px-2 py-1 text-sm"
+              >
+                ES
+              </button>
+              <button
+                onClick={() => i18n.changeLanguage("en")}
+                className="px-2 py-1 text-sm"
+              >
+                EN
+              </button>
+            </div>
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="text-gray-800 mb-8"
             >
+              
               <h1 className="text-2xl font-bold">Jon Arganaraz</h1>
-              <p className="text-sm text-gray-600">Chef Profesional</p>
+              <p className="text-sm text-gray-600">{t("Chef_professional")}</p>
             </motion.div>
-
+            
             {/* Links de navegación */}
             <div className="flex flex-col gap-4 mb-8">
               <AnimatePresence>
                 {menuItems.map((item) => (
                   <motion.button
-                    key={item.id}
+                    key={item.idx}
                     whileHover={{ x: 8 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`
-                      text-left text-lg font-medium
-                      ${
-                        activeSection === item.id
-                          ? "text-gray-800"
-                          : "text-gray-500 hover:text-gray-800"
-                      }
-                      transition-colors duration-200
-                    `}
+                    onClick={() => {
+                      onNavigate(item.idx);
+                      setIsMenuOpen(false);
+                    }}
+                    className="text-left text-lg font-medium text-gray-500 hover:text-gray-800 transition-colors duration-200"
                   >
                     {item.label}
                   </motion.button>

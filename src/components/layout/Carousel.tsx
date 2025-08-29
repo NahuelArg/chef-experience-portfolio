@@ -1,13 +1,32 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 
+
 interface CarouselProps {
   children: ReactNode[];
   className?: string;
+  activeIndex?: number;
+  setActiveIndex?: (idx: number) => void;
 }
 
-export const Carousel = ({ children, className = "" }: CarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: CarouselProps) => {
+  const [internalIndex, setInternalIndex] = useState(0);
+  const currentIndex = typeof activeIndex === 'number' ? activeIndex : internalIndex;
+  // setCurrentIndex debe aceptar función solo si es interno
+  const setCurrentIndex = (value: number | ((prev: number) => number)) => {
+    if (setActiveIndex) {
+      if (typeof value === 'function') {
+        // No se puede usar función con prop, así que calculamos el valor
+        // @ts-ignore
+        setActiveIndex(value(currentIndex));
+      } else {
+        setActiveIndex(value);
+      }
+    } else {
+      setInternalIndex(value as number);
+    }
+  };
   const [isAnimating, setIsAnimating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -16,16 +35,14 @@ export const Carousel = ({ children, className = "" }: CarouselProps) => {
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % children.length);
+  setCurrentIndex((prevIndex: number) => (prevIndex + 1) % children.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
 
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + children.length) % children.length
-    );
+  setCurrentIndex((prevIndex: number) => (prevIndex - 1 + children.length) % children.length);
     setTimeout(() => setIsAnimating(false), 500);
   };
 
@@ -123,76 +140,78 @@ export const Carousel = ({ children, className = "" }: CarouselProps) => {
     container.removeEventListener("touchend", handleTouchEnd);
     window.removeEventListener("keydown", handleKeyDown);
     };
-}, [children.length, isAnimating]);
+  }, [children.length, isAnimating]);
 
-return (
+
+  return (
     <div
-    className={`relative overflow-hidden  bg-white ${className}`}
-    ref={containerRef}
+      className={`relative overflow-hidden  bg-white ${className}`}
+      ref={containerRef}
     >
-    <motion.div
+      <motion.div
         className="flex h-full transition-transform ease-out duration-500"
         animate={{ x: `${-currentIndex * 100}%` }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-    >
+      >
         {children.map((child, index) => (
-    <div key={index} className="flex-shrink-0 w-full h-full">
+          <div key={index} className="flex-shrink-0 w-full h-full">
             {child}
-        </div>
+          </div>
         ))}
-    </motion.div>
+      </motion.div>
 
       {/* Navigation Dots */}
-    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
         {children.map((_, index) => (
-        <button
+          <button
             key={index}
-            onClick={() => {
-            }}
+            onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-            index === currentIndex ? "bg-yellow-400" : "bg-gray-300"
+              index === currentIndex ? "bg-yellow-400" : "bg-gray-300"
             }`}
-        />
+          />
         ))}
-    </div>
+      </div>
 
       {/* Navigation Arrows */}
-    <button
+      <button
         className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-1 md:p-2 z-10 hover:bg-white/80 transition-colors hidden md:flex items-center justify-center"
         onClick={handlePrev}
-    >
+      >
         <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-        <path
+          <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
             d="M15 19l-7-7 7-7"
-        />
+          />
         </svg>
-    </button>
-    <button
+      </button>
+      <button
         className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 z-10 hover:bg-white/80 transition-colors md:flex hidden items-center justify-center"
         onClick={handleNext}
-    >
+      >
         <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-        <path
+          <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
             d="M9 5l7 7-7 7"
-        />
+          />
         </svg>
-    </button>
+      </button>
     </div>
-);
+  );
 };
+
+export default Carousel;

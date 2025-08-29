@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import {useTranslation} from "react-i18next";
 
-const LoaderComponent = () => {
-  const fullText = "Chef profesional";
+
+const LoaderComponent: React.FC = () => {
+  const { t } = useTranslation();
+  const fullText = t("Chef_professional");
   const [displayedText, setDisplayedText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
 

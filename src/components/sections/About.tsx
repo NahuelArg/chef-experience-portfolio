@@ -1,11 +1,14 @@
+import React from 'react';  
 import chef from '../../assets/chefsolidario.jpg'
+import { useTranslation } from 'react-i18next';
 
-const About = () => {
+const About: React.FC = () => {
+  const { t } = useTranslation();
   return (
 <section className="w-full min-h-screen flex items-center justify-center bg-white px-4 sm:px-8 md:px-12 py-8">
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-center">
-          Sobre Mí
+          {t("about_title")}
         </h2>
         {/* Cambiamos el orden en móvil: primero imagen, luego texto */}
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
@@ -13,27 +16,25 @@ const About = () => {
           <div className="space-y-4 mt-6 md:mt-0">
             <div className="prose prose-lg max-w-none">
               <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
-                Soy un chef profesional con pasión por la cocina argentina y sus sabores tradicionales.
+                {t("p1")}
               </p>
               <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 mt-4">
-                Mi filosofía culinaria se basa en respetar los ingredientes locales y las técnicas tradicionales,
-                mientras incorporo toques modernos para crear experiencias gastronómicas únicas.
+                {t("p2")}
               </p>
               <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 mt-4">
-                Especializado en carnes a la parrilla y platos regionales, busco transmitir la esencia
-                de nuestra cultura a través de cada preparación.
+                {t("p3")}
               </p>
             </div>
             {/* Tags */}
             <div className="flex flex-wrap gap-2 sm:gap-3 mt-6">
               <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
-                Parrilla Argentina
+                {t("service1")}
               </span>
               <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
-                Cocina Regional
+                {t("service2")}
               </span>
               <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
-                Eventos Privados
+                {t("service3")}
               </span>
             </div>
           </div>
