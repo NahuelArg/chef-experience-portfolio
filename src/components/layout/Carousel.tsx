@@ -13,12 +13,9 @@ interface CarouselProps {
 const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: CarouselProps) => {
   const [internalIndex, setInternalIndex] = useState(0);
   const currentIndex = typeof activeIndex === 'number' ? activeIndex : internalIndex;
-  // setCurrentIndex debe aceptar función solo si es interno
   const setCurrentIndex = (value: number | ((prev: number) => number)) => {
     if (setActiveIndex) {
       if (typeof value === 'function') {
-        // No se puede usar función con prop, así que calculamos el valor
-        // @ts-ignore
         setActiveIndex(value(currentIndex));
       } else {
         setActiveIndex(value);
@@ -46,7 +43,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     setTimeout(() => setIsAnimating(false), 500);
   };
 
-  // Event listeners para navegación
+ 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -56,7 +53,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     const deltaX = Math.abs(e.deltaX);
     const deltaY = Math.abs(e.deltaY);
 
-      // Si es un gesto de trackpad con scroll horizontal
     if (deltaX > deltaY && deltaX > 20) {
         e.preventDefault();
         if (e.deltaX > 0) {
@@ -65,7 +61,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         handlePrev();
         }
     }
-      // Si es scroll vertical (rueda del mouse o trackpad vertical)
     else if (deltaY > 20 && !isScrollingHorizontally) {
         e.preventDefault();
         if (e.deltaY > 0) {
@@ -89,7 +84,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     const diffX = touchStartX.current - currentX;
     const diffY = touchStartY.current - currentY;
 
-      // Determinar si el scroll es principalmente horizontal
     if (Math.abs(diffX) > Math.abs(diffY)) {
         e.preventDefault();
         isScrollingHorizontally = true;
@@ -103,7 +97,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     const diffX = touchStartX.current - e.changedTouches[0].clientX;
     const diffY = touchStartY.current - e.changedTouches[0].pageY;
 
-      // Si el movimiento fue principalmente horizontal
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
         if (diffX > 0) {
         handleNext();

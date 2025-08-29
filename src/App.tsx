@@ -20,7 +20,6 @@ function App() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    // Simular tiempo de carga
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 5000);
@@ -28,7 +27,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
- 
   const sections = [
     { type: "dish", component: <DishSection title="Provoleta" desc={t("Grilled_melted_provolone")} img={Provoleta} category={t("category1")} /> },
     { type: "section", component: <Home /> },
@@ -47,7 +45,7 @@ function App() {
     <div className="h-screen flex flex-col overflow-hidden bg-white relative">
       <NavBar onNavigate={setActiveSlide} />
       <main className="flex-1 min-h-screen bg-white lg:ml-[200px] transition-all duration-300">
-        <div className="absolute inset-0 pb-12"> {/* Added padding bottom for footer */}
+        <div className="absolute inset-0 pb-12">
           <Carousel className="w-full h-full" activeIndex={activeSlide} setActiveIndex={setActiveSlide}>
             {sections.map((item, idx) => (
               <section key={idx} className="w-full h-full">

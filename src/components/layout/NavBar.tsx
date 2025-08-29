@@ -21,7 +21,6 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
 
   return (
     <>
-      {/* Botón de menú móvil */}
       <button
         className="fixed top-4 right-4 z-50 p-2 bg-white/80 rounded-full shadow-md"
         onClick={handleMenuClick}
@@ -29,7 +28,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
       >
         <FiMenu size={28} />
       </button>
-      {/* Barra de navegación con degradado sutil */}
+      
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black/30 z-40" onClick={handleClose} />
       )}
@@ -49,7 +48,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
           <FiX size={28} />
         </button>
         <div className="relative w-full px-8 py-8">
-          {/* Contenedor principal */}
+          {/* Main contents */}
           <div className="flex flex-col">
             <div className="flex gap-2 mb-4 justify-end">
               <button
@@ -75,7 +74,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
               <p className="text-sm text-gray-600">{t("Chef_professional")}</p>
             </motion.div>
             
-            {/* Links de navegación */}
+            {/* Navigate Links */}
             <div className="flex flex-col gap-4 mb-8">
               <AnimatePresence>
                 {menuItems.map((item) => (
@@ -95,7 +94,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
               </AnimatePresence>
             </div>
 
-            {/* Sol Argentino */}
+            {/* Sun Argentinian */}
             <div className="border-t border-gray-100 pt-4">
               <div
                 className="relative w-20 mx-auto"

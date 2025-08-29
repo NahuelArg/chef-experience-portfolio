@@ -17,11 +17,9 @@ const LoaderComponent: React.FC = () => {
       if (current === fullText.length) {
         clearInterval(interval);
       }
-    }, 120); // velocidad de tipeo (ms)
+    }, 120);
     return () => clearInterval(interval);
   }, [fullText]);
-
-  // Cursor parpadeante
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor((prev) => !prev);

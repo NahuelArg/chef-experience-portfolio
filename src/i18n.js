@@ -14,10 +14,10 @@ i18n
         translation: translationEn
       }
     },
-    lng: "es", // idioma por defecto
+    lng: "es",
     fallbackLng: "es",
     interpolation: {
-      escapeValue: false // React ya se encarga de esto
+      escapeValue: false
     }
   });
 
