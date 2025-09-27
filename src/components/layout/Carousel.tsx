@@ -138,7 +138,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
   return (
     <div
-      className={`relative overflow-hidden  bg-white ${className}`}
+      className={`relative overflow-hidden   ${className}`}
       ref={containerRef}
     >
       <motion.div
@@ -168,7 +168,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
       {/* Navigation Arrows */}
       <button
-        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-1 md:p-2 z-10 hover:bg-white/80 transition-colors hidden md:flex items-center justify-center"
+        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2  rounded-full p-1 md:p-2 z-10  transition-colors hidden md:flex items-center justify-center"
         onClick={handlePrev}
       >
         <svg
@@ -186,7 +186,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         </svg>
       </button>
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 z-10 hover:bg-white/80 transition-colors md:flex hidden items-center justify-center"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2  rounded-full p-2 z-10  transition-colors md:flex hidden items-center justify-center"
         onClick={handleNext}
       >
         <svg
