@@ -22,7 +22,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   return (
     <>
       <button
-        className="fixed top-4 right-4 z-50 p-2  rounded-full shadow-md"
+        className="fixed top-4 right-4 z-50 p-2 bg-white/80 rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
@@ -67,11 +67,11 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-black-800 mb-8"
+              className="text-gray-800 mb-8"
             >
               
               <h1 className="text-2xl font-bold">Jon Arganaraz</h1>
-              <p className="text-sm text-black-600">{t("Chef_professional")}</p>
+              <p className="text-sm text-gray-600">{t("Chef_professional")}</p>
             </motion.div>
             
             {/* Navigate Links */}
@@ -86,7 +86,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
                       onNavigate(item.idx);
                       setIsMenuOpen(false);
                     }}
-                    className="text-left text-lg font-medium text-black-500 hover:text-gray-800 transition-colors duration-200"
+                    className="text-left text-lg font-medium text-gray-500 hover:text-gray-800 transition-colors duration-200"
                   >
                     {item.label}
                   </motion.button>
@@ -95,7 +95,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
             </div>
 
             {/* Sun Argentinian */}
-            <div className="border-t border-black-100 pt-4">
+            <div className="border-t border-gray-100 pt-4">
               <div
                 className="relative w-20 mx-auto"
                 style={{ height: "35.6px" }}

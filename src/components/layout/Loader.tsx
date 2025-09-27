@@ -38,7 +38,7 @@ const LoaderComponent: React.FC = () => {
           ease: "easeOut",
         },
       }}
-      className="fixed inset-0  z-50 flex items-center justify-center"
+      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
     >
       <div className="text-center">
         <motion.h1
@@ -49,12 +49,12 @@ const LoaderComponent: React.FC = () => {
             ease: "easeInOut",
             times: [0, 0.3, 0.6, 1],
           }}
-          className="text-4xl md:text-6xl font-light text-black-600 mb-4"
+          className="text-4xl md:text-6xl font-light text-yellow-600 mb-4"
         >
           Jon Arganaraz
         </motion.h1>
         <div
-          className="text-xl text-black-600 font-mono inline-block overflow-hidden"
+          className="text-xl text-gray-600 font-mono inline-block overflow-hidden"
           style={{ whiteSpace: "pre" }}
         >
           {displayedText}

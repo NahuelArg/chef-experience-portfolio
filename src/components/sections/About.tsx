@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const About: React.FC = () => {
   const { t } = useTranslation();
   return (
-<section className="w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 py-8">
+<section className="w-full min-h-screen flex items-center justify-center bg-white px-4 sm:px-8 md:px-12 py-8">
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-center">
           {t("about_title")}
@@ -14,25 +14,25 @@ const About: React.FC = () => {
           {/* Text Container */}
           <div className="space-y-4 mt-6 md:mt-0">
             <div className="prose prose-lg max-w-none">
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black-700">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
                 {t("p1")}
               </p>
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black-700 mt-4">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 mt-4">
                 {t("p2")}
               </p>
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black-700 mt-4">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 mt-4">
                 {t("p3")}
               </p>
             </div>
             {/* Tags */}
             <div className="flex flex-wrap gap-2 sm:gap-3 mt-6">
-              <span className="px-3 py-1 bg-black-100 text-black-800 rounded-full text-xs sm:text-sm">
+              <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
                 {t("service1")}
               </span>
-              <span className="px-3 py-1 bg-black-100 text-black-800 rounded-full text-xs sm:text-sm">
+              <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
                 {t("service2")}
               </span>
-              <span className="px-3 py-1 bg-black-100 text-black-800 rounded-full text-xs sm:text-sm">
+              <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs sm:text-sm">
                 {t("service3")}
               </span>
             </div>
