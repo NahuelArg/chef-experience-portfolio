@@ -28,13 +28,13 @@ function App() {
   }, []);
 
   const sections = [
-    { type: "dish", component: <DishSection title="Provoleta" desc={t("Grilled_melted_provolone")} img={Provoleta} category={t("category1")} /> },
+    { type: "dish", component: <DishSection title="Provoleta"  img={Provoleta} category={t("category1")} /> },
     { type: "section", component: <Home /> },
-    { type: "dish", component: <DishSection title={t("Title_argentinian_asado")} desc={t("Argentinian_asado")} img={asado} category={t("category2")} /> },
+    { type: "dish", component: <DishSection title={t("Title_argentinian_asado")} img={asado} category={t("category2")} /> },
     { type: "section", component: <About /> },
-    { type: "dish", component: <DishSection title={t("Title_empanadas_Criollas")} desc={t("Criolla_empanadas")} img={empanadas} category={t("category1")} /> },
+    { type: "dish", component: <DishSection title={t("Title_empanadas_Criollas")}  img={empanadas} category={t("category1")} /> },
     { type: "section", component: <Contact /> },
-    { type: "dish", component: <DishSection title={t("Title_lemon_offal")} desc={t("Lemon_offal")} img={mollejas} category={t("category2")} /> },
+    { type: "dish", component: <DishSection title={t("Title_lemon_offal")}  img={mollejas} category={t("category2")} /> },
   ];
 
   if (isLoading) {
