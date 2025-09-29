@@ -70,12 +70,12 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
               className="text-black-800 mb-8"
             >
               
-              <h1 className="text-2xl font-bold">Jon Arganaraz</h1>
-              <p className="text-sm text-black-600">{t("Chef_professional")}</p>
+              <h1 className="text-2xl font-heading">Jon Arganaraz</h1>
+              <p className="text-sm text-black-600 font-body">{t("Chef_professional")}</p>
             </motion.div>
             
             {/* Navigate Links */}
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8 font-body">
               <AnimatePresence>
                 {menuItems.map((item) => (
                   <motion.button
