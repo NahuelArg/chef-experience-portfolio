@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import Footer from "./components/sections/Footer";
 import NavBar from "./components/layout/NavBar";
 import About from "./components/sections/About";
@@ -16,7 +15,6 @@ import dish3 from './assets/Dish3.jpeg';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSlide, setActiveSlide] = useState(0);
-  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
