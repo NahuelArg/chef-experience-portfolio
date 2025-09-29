@@ -1,22 +1,23 @@
 
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface DishProps {
-  title: string;
-  desc: string;
   img: string;
-  category:string;
 }
 
-
-  const DishSection: React.FC<DishProps> = ({ title, desc, category, img }) => (
+const DishSection: React.FC<DishProps> = ({ img }) => (
   <section className="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8">
-    <img src={img} alt={title} className="w-64 h-64 object-cover rounded-lg shadow mb-6" />
-    <h2 className="text-3xl font-bold mb-2 font-heading">{title}</h2>
-    <span className="text-sm text-black-700 mb-4 font-body">{category}</span>
-    <p className="text-lg text-black-700 max-w-xl text-center font-body">{desc}</p>
+     <motion.img
+      src={img}
+      alt="Dish Image"
+      className="w-64 h-64 object-cover rounded-lg shadow mb-6"
+      initial={{ x: 0, opacity: 0 }}
+      animate={{ x: -150, opacity: 1 }}
+      transition={{ duration: 4, ease: "easeInOut" }}
+     />
   </section>
 );
 
 export default DishSection;
 
-  

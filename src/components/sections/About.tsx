@@ -1,5 +1,5 @@
 import React from 'react';  
-import chef from '../../assets/chefsolidario.jpg'
+import chef from '../../assets/Perfil_img.jpeg'
 import { useTranslation } from 'react-i18next';
 
 const About: React.FC = () => {
@@ -38,11 +38,11 @@ const About: React.FC = () => {
             </div>
           </div>
           {/* Image Container */}
-          <div className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] w-full rounded-lg overflow-hidden shadow-xl">
+          <div className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] w-[260px] sm:w-[300px] md:w-[350px] lg:w-[400px] rounded-lg overflow-hidden shadow-xl bg-black flex items-center justify-center">
             <img 
               src={chef} 
               alt="Chef en acción" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-contain object-center"
             />
           </div>
         </div>
