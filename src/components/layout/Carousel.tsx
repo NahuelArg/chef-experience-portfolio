@@ -169,7 +169,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-yellow-400" : "bg-gray-300"
+              index === currentIndex ? "bg-gray-500" : "bg-gray-300"
             }`}
           />
         ))}
