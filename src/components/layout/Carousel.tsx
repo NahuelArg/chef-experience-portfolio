@@ -33,21 +33,19 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (isAnimating) return;
     setIsAnimating(true);
   setCurrentIndex((prevIndex: number) => (prevIndex + 1) % children.length);
-    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
   setCurrentIndex((prevIndex: number) => (prevIndex - 1 + children.length) % children.length);
-    setTimeout(() => setIsAnimating(false), 500);
   };
 
  
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    let isScrollingHorizontally = false;
+
 
     const handleWheel = (e: WheelEvent) => {
     const deltaX = Math.abs(e.deltaX);
@@ -56,14 +54,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (deltaX > deltaY && deltaX > 20) {
         e.preventDefault();
         if (e.deltaX > 0) {
-        handleNext();
-        } else {
-        handlePrev();
-        }
-    }
-    else if (deltaY > 20 && !isScrollingHorizontally) {
-        e.preventDefault();
-        if (e.deltaY > 0) {
         handleNext();
         } else {
         handlePrev();
@@ -86,7 +76,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
         e.preventDefault();
-        isScrollingHorizontally = true;
     }
 
     };
@@ -107,7 +96,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     touchStartX.current = 0;
     touchStartY.current = 0;
-    isScrollingHorizontally = false;
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -115,8 +103,9 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (e.key === "ArrowLeft") handlePrev();
     if (e.key === "ArrowRight") handleNext();
     };
-
+    
     container.addEventListener("wheel", handleWheel, { passive: false });
+
     container.addEventListener("touchstart", handleTouchStart, {
     passive: true,
     });
@@ -138,19 +127,27 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
   return (
     <div
-      className={`relative overflow-hidden  bg-white ${className}`}
+      className={`relative ${className}`}
       ref={containerRef}
     >
       <motion.div
-        className="flex h-full transition-transform ease-out duration-500"
+        className="flex h-full transition-transform ease-out duration-200"
         animate={{ x: `${-currentIndex * 100}%` }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ type: "spring", stiffness: 400, damping: 40, duration: 0.3 }}
+        onAnimationComplete={() => setIsAnimating(false)}
       >
-        {children.map((child, index) => (
-          <div key={index} className="flex-shrink-0 w-full h-full">
-            {child}
-          </div>
-        ))}
+        {children.map((child, index) => {
+          if (Math.abs(index - currentIndex) <= 1) {
+            return (
+              <div key={index} className="flex-shrink-0 w-full h-full">
+                {child}
+              </div>
+            );
+          }
+          return (
+            <div key={index} className="flex-shrink-0 w-full h-full" aria-hidden="true" />
+          );
+        })}
       </motion.div>
 
       {/* Navigation Dots */}
@@ -160,7 +157,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-yellow-400" : "bg-gray-300"
+              index === currentIndex ? "bg-gray-400" : "bg-gray-300"
             }`}
           />
         ))}

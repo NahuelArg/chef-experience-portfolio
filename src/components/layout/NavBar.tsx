@@ -14,15 +14,14 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
 
   const menuItems = [
-    { idx: 1, label: t("Home") },
-    { idx: 3, label: t("About") },
+    { idx: 1, label: t("About") },
     { idx: 5, label: t("Contact") },
   ];
 
   return (
     <>
       <button
-        className="fixed top-4 right-4 z-50 p-2 bg-white/80 rounded-full shadow-md"
+        className="fixed top-4 right-4 z-50 p-2 bg-[ed7d9] rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
@@ -34,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
       )}
       <nav
         className={`
-    fixed top-0 right-0 h-full w-[220px] bg-white shadow-lg z-50
+    fixed top-0 right-0 h-full w-full max-w-xs sm:w-[220px] bg-white shadow-lg z-50
     transform transition-transform duration-300
     ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
     flex flex-col px-6 py-8 minh-h-fit
@@ -70,12 +69,12 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
               className="text-gray-800 mb-8"
             >
               
-              <h1 className="text-2xl font-bold">Jon Arganaraz</h1>
-              <p className="text-sm text-gray-600">{t("Chef_professional")}</p>
+              <h1 className="text-2xl font-heading">Jon Arganaraz</h1>
+              <p className="text-sm text-black-600 font-body">{t("Chef_professional")}</p>
             </motion.div>
             
             {/* Navigate Links */}
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8 font-body">
               <AnimatePresence>
                 {menuItems.map((item) => (
                   <motion.button
