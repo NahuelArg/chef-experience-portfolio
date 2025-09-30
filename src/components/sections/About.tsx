@@ -1,5 +1,4 @@
 import React from 'react';  
-import chef from '../../assets/Perfil_img.jpeg'
 import { useTranslation } from 'react-i18next';
 
 const About: React.FC = () => {
@@ -11,6 +10,14 @@ const About: React.FC = () => {
           {t("about_title")}
         </h2>
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
+          {/* Image Container */}
+          <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-[200px] sm:w-[250px] md:w-[300px] lg:w-[350px] rounded-lg overflow-hidden shadow-xl bg-black flex items-center justify-center mx-auto md:mx-0">
+            <img 
+              src={"https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_1605_en894f.jpg"} 
+              alt="Chef en acción" 
+              className="w-full h-full object-contain object-center"
+            />
+          </div>
           {/* Text Container */}
           <div className="space-y-4 mt-6 md:mt-0">
             <div className="prose prose-lg max-w-none">
@@ -36,14 +43,6 @@ const About: React.FC = () => {
                 {t("service3")}
               </span>
             </div>
-          </div>
-          {/* Image Container */}
-          <div className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] w-[260px] sm:w-[300px] md:w-[350px] lg:w-[400px] rounded-lg overflow-hidden shadow-xl bg-black flex items-center justify-center">
-            <img 
-              src={chef} 
-              alt="Chef en acción" 
-              className="w-full h-full object-contain object-center"
-            />
           </div>
         </div>
       </div>

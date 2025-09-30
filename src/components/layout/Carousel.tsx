@@ -142,15 +142,24 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
       ref={containerRef}
     >
       <motion.div
-        className="flex h-full transition-transform ease-out duration-500"
+        className="flex h-full transition-transform ease-out duration-200"
         animate={{ x: `${-currentIndex * 100}%` }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{ type: "spring", stiffness: 400, damping: 40, duration: 0.3 }}
       >
-        {children.map((child, index) => (
-          <div key={index} className="flex-shrink-0 w-full h-full">
-            {child}
-          </div>
-        ))}
+        {children.map((child, index) => {
+          // Lazy loading avanzado: solo renderiza el slide activo y los adyacentes
+          if (Math.abs(index - currentIndex) <= 1) {
+            return (
+              <div key={index} className="flex-shrink-0 w-full h-full">
+                {child}
+              </div>
+            );
+          }
+          // Renderiza un placeholder vacío para los demás
+          return (
+            <div key={index} className="flex-shrink-0 w-full h-full" aria-hidden="true" />
+          );
+        })}
       </motion.div>
 
       {/* Navigation Dots */}
