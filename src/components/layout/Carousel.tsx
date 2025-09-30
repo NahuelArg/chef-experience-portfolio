@@ -45,7 +45,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    let isScrollingHorizontally = false;
+
 
     const handleWheel = (e: WheelEvent) => {
     const deltaX = Math.abs(e.deltaX);
@@ -54,14 +54,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (deltaX > deltaY && deltaX > 20) {
         e.preventDefault();
         if (e.deltaX > 0) {
-        handleNext();
-        } else {
-        handlePrev();
-        }
-    }
-    else if (deltaY > 20 && !isScrollingHorizontally) {
-        e.preventDefault();
-        if (e.deltaY > 0) {
         handleNext();
         } else {
         handlePrev();
@@ -84,7 +76,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
         e.preventDefault();
-        isScrollingHorizontally = true;
     }
 
     };
@@ -105,7 +96,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     touchStartX.current = 0;
     touchStartY.current = 0;
-    isScrollingHorizontally = false;
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -137,7 +127,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
   return (
     <div
-      className={`relative overflow-hidden   ${className}`}
+      className={`relative ${className}`}
       ref={containerRef}
     >
       <motion.div
@@ -147,7 +137,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         onAnimationComplete={() => setIsAnimating(false)}
       >
         {children.map((child, index) => {
-          // Lazy loading avanzado: solo renderiza el slide activo y los adyacentes
           if (Math.abs(index - currentIndex) <= 1) {
             return (
               <div key={index} className="flex-shrink-0 w-full h-full">
@@ -155,7 +144,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
               </div>
             );
           }
-          // Renderiza un placeholder vacío para los demás
           return (
             <div key={index} className="flex-shrink-0 w-full h-full" aria-hidden="true" />
           );
@@ -169,7 +157,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-gray-500" : "bg-gray-300"
+              index === currentIndex ? "bg-gray-400" : "bg-gray-300"
             }`}
           />
         ))}
@@ -177,7 +165,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
       {/* Navigation Arrows */}
       <button
-        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2  rounded-full p-1 md:p-2 z-10  transition-colors hidden md:flex items-center justify-center"
+        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-1 md:p-2 z-10 hover:bg-white/80 transition-colors hidden md:flex items-center justify-center"
         onClick={handlePrev}
       >
         <svg
@@ -195,7 +183,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         </svg>
       </button>
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2  rounded-full p-2 z-10  transition-colors md:flex hidden items-center justify-center"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 z-10 hover:bg-white/80 transition-colors md:flex hidden items-center justify-center"
         onClick={handleNext}
       >
         <svg

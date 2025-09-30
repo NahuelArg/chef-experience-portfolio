@@ -21,7 +21,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   return (
     <>
       <button
-        className="fixed top-4 right-4 z-50 p-2  rounded-full shadow-md"
+        className="fixed top-4 right-4 z-50 p-2 bg-[ed7d9] rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
@@ -33,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
       )}
       <nav
         className={`
-    fixed top-0 right-0 h-full w-[220px] bg-white shadow-lg z-50
+    fixed top-0 right-0 h-full w-full max-w-xs sm:w-[220px] bg-white shadow-lg z-50
     transform transition-transform duration-300
     ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
     flex flex-col px-6 py-8 minh-h-fit
@@ -66,7 +66,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-black-800 mb-8"
+              className="text-gray-800 mb-8"
             >
               
               <h1 className="text-2xl font-heading">Jon Arganaraz</h1>
@@ -85,7 +85,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
                       onNavigate(item.idx);
                       setIsMenuOpen(false);
                     }}
-                    className="text-left text-lg font-medium text-black-500 hover:text-gray-800 transition-colors duration-200"
+                    className="text-left text-lg font-medium text-gray-500 hover:text-gray-800 transition-colors duration-200"
                   >
                     {item.label}
                   </motion.button>
@@ -94,7 +94,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
             </div>
 
             {/* Sun Argentinian */}
-            <div className="border-t border-black-100 pt-4">
+            <div className="border-t border-gray-100 pt-4">
               <div
                 className="relative w-20 mx-auto"
                 style={{ height: "35.6px" }}

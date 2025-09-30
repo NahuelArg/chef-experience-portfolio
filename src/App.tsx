@@ -36,9 +36,9 @@ function App() {
   }
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden relative">
+    <div className="h-screen flex flex-col relative">
       <NavBar onNavigate={setActiveSlide} />
-      <main className="flex-1 min-h-screen  lg:ml-[200px] transition-all duration-400">
+      <main className="flex-1 min-h-screen   transition-all duration-400">
         <div className="absolute inset-0 pb-12">
           <Carousel className="w-full h-full" activeIndex={activeSlide} setActiveIndex={setActiveSlide}>
             {sections.map((item, idx) => (

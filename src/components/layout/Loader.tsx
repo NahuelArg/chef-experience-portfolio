@@ -42,7 +42,7 @@ const LoaderComponent: React.FC = () => {
             ease: "easeInOut",
             times: [0, 0.3, 0.6, 1],
           }}
-          className="text-xl text-black-600 font-body inline-block overflow-hidden"
+          className="text-xl text-black-600 font-body inline-block"
           style={{ whiteSpace: "pre" }}
         >
           {fullText}
