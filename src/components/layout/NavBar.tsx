@@ -21,7 +21,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   return (
     <>
       <button
-        className="fixed top-4 right-4 z-50 p-2 bg-white/80 rounded-full shadow-md"
+        className="fixed top-4 right-4 z-50 p-2 bg-[ed7d9] rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
@@ -33,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
       )}
       <nav
         className={`
-    fixed top-0 right-0 h-full w-[220px] bg-white shadow-lg z-50
+    fixed top-0 right-0 h-full w-full max-w-xs sm:w-[220px] bg-white shadow-lg z-50
     transform transition-transform duration-300
     ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
     flex flex-col px-6 py-8 minh-h-fit

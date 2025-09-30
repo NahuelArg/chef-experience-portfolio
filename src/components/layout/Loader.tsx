@@ -19,7 +19,7 @@ const LoaderComponent: React.FC = () => {
           ease: "easeOut",
         },
       }}
-      className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+      className="fixed inset-0  z-50 flex items-center justify-center"
     >
       <div className="text-center">
         <motion.h1

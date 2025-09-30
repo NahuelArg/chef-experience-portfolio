@@ -45,7 +45,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    let isScrollingHorizontally = false;
+
 
     const handleWheel = (e: WheelEvent) => {
     const deltaX = Math.abs(e.deltaX);
@@ -76,7 +76,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
         e.preventDefault();
-        isScrollingHorizontally = true;
     }
 
     };
@@ -97,7 +96,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
     touchStartX.current = 0;
     touchStartY.current = 0;
-    isScrollingHorizontally = false;
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -129,7 +127,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
 
   return (
     <div
-      className={`relative bg-white ${className}`}
+      className={`relative ${className}`}
       ref={containerRef}
     >
       <motion.div
@@ -139,7 +137,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         onAnimationComplete={() => setIsAnimating(false)}
       >
         {children.map((child, index) => {
-          // Lazy loading avanzado: solo renderiza el slide activo y los adyacentes
           if (Math.abs(index - currentIndex) <= 1) {
             return (
               <div key={index} className="flex-shrink-0 w-full h-full">
@@ -147,7 +144,6 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
               </div>
             );
           }
-          // Renderiza un placeholder vacío para los demás
           return (
             <div key={index} className="flex-shrink-0 w-full h-full" aria-hidden="true" />
           );
@@ -161,7 +157,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-gray-500" : "bg-gray-300"
+              index === currentIndex ? "bg-gray-400" : "bg-gray-300"
             }`}
           />
         ))}
