@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {useTranslation} from "react-i18next";
 
 
