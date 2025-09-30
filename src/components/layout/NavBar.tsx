@@ -14,8 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
 
   const menuItems = [
-    { idx: 1, label: t("Home") },
-    { idx: 3, label: t("About") },
+    { idx: 1, label: t("About") },
     { idx: 5, label: t("Contact") },
   ];
 
