@@ -33,14 +33,12 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (isAnimating) return;
     setIsAnimating(true);
   setCurrentIndex((prevIndex: number) => (prevIndex + 1) % children.length);
-    setTimeout(() => setIsAnimating(false), 500);
   };
 
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
   setCurrentIndex((prevIndex: number) => (prevIndex - 1 + children.length) % children.length);
-    setTimeout(() => setIsAnimating(false), 500);
   };
 
  
@@ -115,8 +113,9 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
     if (e.key === "ArrowLeft") handlePrev();
     if (e.key === "ArrowRight") handleNext();
     };
-
+    
     container.addEventListener("wheel", handleWheel, { passive: false });
+
     container.addEventListener("touchstart", handleTouchStart, {
     passive: true,
     });
@@ -145,6 +144,7 @@ const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: Car
         className="flex h-full transition-transform ease-out duration-200"
         animate={{ x: `${-currentIndex * 100}%` }}
         transition={{ type: "spring", stiffness: 400, damping: 40, duration: 0.3 }}
+        onAnimationComplete={() => setIsAnimating(false)}
       >
         {children.map((child, index) => {
           // Lazy loading avanzado: solo renderiza el slide activo y los adyacentes
