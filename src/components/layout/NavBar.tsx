@@ -14,8 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
 
   const menuItems = [
-    { idx: 1, label: t("Home") },
-    { idx: 3, label: t("About") },
+    { idx: 1, label: t("About") },
     { idx: 5, label: t("Contact") },
   ];
 
@@ -70,12 +69,12 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
               className="text-gray-800 mb-8"
             >
               
-              <h1 className="text-2xl font-bold">Jon Arganaraz</h1>
-              <p className="text-sm text-gray-600">{t("Chef_professional")}</p>
+              <h1 className="text-2xl font-heading">Jon Arganaraz</h1>
+              <p className="text-sm text-black-600 font-body">{t("Chef_professional")}</p>
             </motion.div>
             
             {/* Navigate Links */}
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-4 mb-8 font-body">
               <AnimatePresence>
                 {menuItems.map((item) => (
                   <motion.button

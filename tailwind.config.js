@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Cormorant', 'serif'],
+        body: ['Lora', 'serif'],
+      },
     },
   },
   plugins: [],
