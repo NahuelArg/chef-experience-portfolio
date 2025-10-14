@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Footer from "./components/sections/Footer";
 import NavBar from "./components/layout/NavBar";
 import About from "./components/sections/About";
@@ -6,22 +6,11 @@ import Contact from "./components/sections/Contact";
 import Carousel from "./components/layout/Carousel";
 import DishSection from "./components/sections/DishSection";
 import Home from "./components/sections/Home";
-import Loader from "./components/layout/Loader";  
 
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [activeSlide, setActiveSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const sections = [
     { type: "section", component: <Home /> },
     { type: "section", component: <About /> },
@@ -30,10 +19,6 @@ function App() {
     { type: "dish", component: <DishSection  img={"https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_2209_jpg_gactuk.jpg"}  /> },
     { type: "section", component: <Contact /> },
   ];
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <div className="h-screen flex flex-col relative">
