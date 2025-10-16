@@ -1,207 +1,193 @@
-import { motion } from "framer-motion";
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-
-interface CarouselProps {
+interface HorizontalScrollProps {
   children: ReactNode[];
   className?: string;
   activeIndex?: number;
   setActiveIndex?: (idx: number) => void;
 }
 
-
-const Carousel = ({ children, className = "", activeIndex, setActiveIndex }: CarouselProps) => {
-  const [internalIndex, setInternalIndex] = useState(0);
-  const currentIndex = typeof activeIndex === 'number' ? activeIndex : internalIndex;
-  const setCurrentIndex = (value: number | ((prev: number) => number)) => {
-    if (setActiveIndex) {
-      if (typeof value === 'function') {
-        setActiveIndex(value(currentIndex));
-      } else {
-        setActiveIndex(value);
-      }
-    } else {
-      setInternalIndex(value as number);
-    }
-  };
-  const [isAnimating, setIsAnimating] = useState(false);
+const HorizontalScroll = ({ 
+  children, 
+  className = "", 
+  activeIndex, 
+  setActiveIndex 
+}: HorizontalScrollProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-  setCurrentIndex((prevIndex: number) => (prevIndex + 1) % children.length);
+  // Navegar suavemente a un índice específico
+  const scrollToIndex = (index: number) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const targetScroll = index * container.clientWidth;
+    container.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
   };
 
-  const handlePrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-  setCurrentIndex((prevIndex: number) => (prevIndex - 1 + children.length) % children.length);
-  };
+  // Efecto para navegar cuando cambia activeIndex desde fuera
+  useEffect(() => {
+    if (typeof activeIndex === 'number') {
+      scrollToIndex(activeIndex);
+    }
+  }, [activeIndex]);
 
- 
+  // Detectar en qué sección estamos basado en el scroll (con debounce)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !setActiveIndex) return;
+
+    const handleScroll = () => {
+      // Limpiar timeout previo
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Esperar a que termine el scroll para actualizar el índice
+      scrollTimeoutRef.current = setTimeout(() => {
+        const scrollLeft = container.scrollLeft;
+        const containerWidth = container.clientWidth;
+        const currentIndex = Math.round(scrollLeft / containerWidth);
+        
+        setActiveIndex(currentIndex);
+      }, 150);
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [setActiveIndex]);
+
+  // Convertir wheel vertical a scroll horizontal (MUY SUAVE)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-
     const handleWheel = (e: WheelEvent) => {
-    const deltaX = Math.abs(e.deltaX);
-    const deltaY = Math.abs(e.deltaY);
+      // Si hay movimiento horizontal natural, dejarlo pasar
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        return;
+      }
 
-    if (deltaX > deltaY && deltaX > 20) {
-        e.preventDefault();
-        if (e.deltaX > 0) {
-        handleNext();
-        } else {
-        handlePrev();
-        }
-    }
+      // Convertir wheel vertical a horizontal de forma SUAVE
+      e.preventDefault();
+      
+      // Multiplicador para hacer el scroll más suave y controlable
+      const smoothFactor = 0.6;
+      container.scrollLeft += e.deltaY * smoothFactor;
     };
 
-    const handleTouchStart = (e: TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].pageY;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-    if (!touchStartX.current || isAnimating) return;
-
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].pageY;
-    const diffX = touchStartX.current - currentX;
-    const diffY = touchStartY.current - currentY;
-
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-        e.preventDefault();
-    }
-
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-    if (!touchStartX.current || isAnimating) return;
-
-    const diffX = touchStartX.current - e.changedTouches[0].clientX;
-    const diffY = touchStartY.current - e.changedTouches[0].pageY;
-
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-        if (diffX > 0) {
-        handleNext();
-        } else {
-        handlePrev();
-        }
-    }
-
-    touchStartX.current = 0;
-    touchStartY.current = 0;
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-    if (isAnimating) return;
-    if (e.key === "ArrowLeft") handlePrev();
-    if (e.key === "ArrowRight") handleNext();
-    };
-    
-    container.addEventListener("wheel", handleWheel, { passive: false });
-
-    container.addEventListener("touchstart", handleTouchStart, {
-    passive: true,
-    });
-    container.addEventListener("touchmove", handleTouchMove, {
-    passive: false,
-    });
-    container.addEventListener("touchend", handleTouchEnd);
-    window.addEventListener("keydown", handleKeyDown);
+    container.addEventListener('wheel', handleWheel, { passive: false });
 
     return () => {
-    container.removeEventListener("wheel", handleWheel);
-    container.removeEventListener("touchstart", handleTouchStart);
-    container.removeEventListener("touchmove", handleTouchMove);
-    container.removeEventListener("touchend", handleTouchEnd);
-    window.removeEventListener("keydown", handleKeyDown);
+      container.removeEventListener('wheel', handleWheel);
     };
-  }, [children.length, isAnimating]);
+  }, []);
 
+  // Navegación con teclado
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        container.scrollBy({
+          left: -container.clientWidth,
+          behavior: 'smooth'
+        });
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        container.scrollBy({
+          left: container.clientWidth,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
-    <div
-      className={`relative ${className}`}
-      ref={containerRef}
-    >
-      <motion.div
-        className="flex h-full transition-transform ease-out duration-200"
-        animate={{ x: `${-currentIndex * 100}%` }}
-        transition={{ type: "spring", stiffness: 400, damping: 40, duration: 0.3 }}
-        onAnimationComplete={() => setIsAnimating(false)}
+    <div className={`relative w-full h-full ${className}`}>
+      <div 
+        ref={containerRef}
+        className="w-full h-full overflow-x-auto overflow-y-hidden scrollbar-hide"
+        style={{
+          WebkitOverflowScrolling: 'touch'
+        }}
       >
-        {children.map((child, index) => {
-          if (Math.abs(index - currentIndex) <= 1) {
-            return (
-              <div key={index} className="flex-shrink-0 w-full h-full">
-                {child}
-              </div>
-            );
-          }
-          return (
-            <div key={index} className="flex-shrink-0 w-full h-full" aria-hidden="true" />
-          );
-        })}
-      </motion.div>
-
-      {/* Navigation Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-        {children.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-200 ${
-              index === currentIndex ? "bg-gray-400" : "bg-gray-300"
-            }`}
-          />
-        ))}
+        <div 
+          className="flex h-full"
+          style={{ width: `${childrenArray.length * 100}%` }}
+        >
+          {childrenArray.map((child, index) => (
+            <div 
+              key={index} 
+              className="flex-shrink-0 h-full"
+              style={{ 
+                width: `${100 / childrenArray.length}%`
+              }}
+            >
+              {child}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-1 md:p-2 z-10 hover:bg-white/80 transition-colors hidden md:flex items-center justify-center"
-        onClick={handlePrev}
+      {/* Botones de navegación */}
+      <button 
+        onClick={() => {
+          const container = containerRef.current;
+          if (container) {
+            container.scrollBy({
+              left: -container.clientWidth,
+              behavior: 'smooth'
+            });
+          }
+        }}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/50 hover:bg-white/80 p-3 rounded-full transition-colors hidden md:block"
+        aria-label="Previous section"
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
-      <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 z-10 hover:bg-white/80 transition-colors md:flex hidden items-center justify-center"
-        onClick={handleNext}
+
+      <button 
+        onClick={() => {
+          const container = containerRef.current;
+          if (container) {
+            container.scrollBy({
+              left: container.clientWidth,
+              behavior: 'smooth'
+            });
+          }
+        }}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/50 hover:bg-white/80 p-3 rounded-full transition-colors hidden md:block"
+        aria-label="Next section"
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
+
+
     </div>
   );
 };
 
-export default Carousel;
+export default HorizontalScroll;
