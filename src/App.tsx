@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from "react-i18next";
 import Footer from "./components/sections/Footer";
 import NavBar from "./components/layout/NavBar";
 import About from "./components/sections/About";
