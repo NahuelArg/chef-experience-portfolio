@@ -20,7 +20,7 @@ function App() {
     { component: <DishSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6574_l5pc55.jpg" /> },
     { component: <SolSection /> },
     { component: <DishSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6580_i8kgg2.jpg" /> },
-    { component: <DescriptionAbout t={(key: string) => key} /> },
+    { component: <DescriptionAbout /> },
     { component: <Contact /> },
   ];
 
