@@ -14,14 +14,14 @@ const NavBar: React.FC<NavBarProps> = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
 
   const menuItems = [
-    { idx: 1, label: t("About") },
-    { idx: 5, label: t("Contact") },
+    { idx: 0, label: t("About") },
+    { idx: 7, label: t("Contact") },
   ];
 
   return (
     <>
       <button
-        className="fixed top-4 right-4 z-50 p-2 bg-[ed7d9] rounded-full shadow-md"
+        className="fixed top-4 right-4 z-50 p-2 bg-[#ed7d9] rounded-full shadow-md"
         onClick={handleMenuClick}
         aria-label="Abrir menú"
       >
