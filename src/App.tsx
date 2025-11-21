@@ -4,10 +4,11 @@ import NavBar from "./components/layout/NavBar";
 import About from "./components/sections/About";
 import Contact from "./components/sections/Contact";
 import HorizontalScroll from "./components/layout/Carousel";
-import DishSection from "./components/sections/DishSection";
+import ImgSection from "./components/sections/ImgSection";
 import DescriptionAbout from "./components/sections/DescriptionAbout";
 import Services from "./components/sections/Services";
 import SolSection from "./components/sections/SolSection";
+import VideoSection from './components/sections/VideoSection'
 
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
   const sections = [
     { component: <About /> },
     { component: <Services /> },
-    { component: <DishSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_2209_jpg_gactuk.jpg" /> },
-    { component: <DishSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6574_l5pc55.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_2209_jpg_gactuk.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6574_l5pc55.jpg" /> },
+    {component: <VideoSection video='https://player.cloudinary.com/embed/?cloud_name=dyiiztnx4&public_id=IMG_4492_1_gkjl9s&profile=cld-looping'/>},
     { component: <SolSection /> },
-    { component: <DishSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6580_i8kgg2.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6580_i8kgg2.jpg" /> },
     { component: <DescriptionAbout /> },
     { component: <Contact /> },
   ];
