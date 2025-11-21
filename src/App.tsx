@@ -17,11 +17,11 @@ function App() {
   const sections = [
     { component: <About /> },
     { component: <Services /> },
-    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_2209_jpg_gactuk.jpg" /> },
-    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6574_l5pc55.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735236/IMG_4250_jlx4wl.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" /> },
     {component: <VideoSection video='https://player.cloudinary.com/embed/?cloud_name=dyiiztnx4&public_id=IMG_4492_1_gkjl9s&profile=cld-looping'/>},
     { component: <SolSection /> },
-    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1759234128/IMG_6580_i8kgg2.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735239/IMG_4269_dnahpb.jpg" /> },
     { component: <DescriptionAbout /> },
     { component: <Contact /> },
   ];
