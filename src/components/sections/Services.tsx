@@ -6,8 +6,8 @@ type ServiceProps = {
 };
 
 const LargeService: React.FC<ServiceProps> = ({ title }) => (
-    <div className="flex flex-col items-center text-black-800 p-6 w-72">
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-heading mb-4 text-center">{title}</h3>
+    <div className="flex flex-col items-center text-black-800 p-4 w-64">
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-heading mb-3 text-center">{title}</h3>
     </div>
 );
 
@@ -28,7 +28,7 @@ const Services: React.FC = () => {
 
     return (
         <section className="min-h-screen flex flex-col items-center justify-center">
-            <div className="flex flex-col justify-center gap-6 px-4 font-body">
+            <div className="flex flex-col justify-center gap-4 px-4 font-body">
                 {services.map((service, idx) => (
                     <LargeService
                         key={idx}

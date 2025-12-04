@@ -5,21 +5,21 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <section className="w-full h-full flex items-center justify-center">
+    <section className="w-full h-full flex items-center justify-center relative">
       <div className="max-w-4xl mx-auto p-4 md:p-8 w-full">
-        <h2 className="text-3xl md:text-4xl font-light mb-6 md:mb-8 font-heading">{t("contact_title")}</h2>
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12">
-          <div className="space-y-4 md:space-y-6">
+        <h2 className="text-2xl md:text-3xl font-light mb-4 md:mb-6 font-heading">{t("contact_title")}</h2>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8">
+          <div className="space-y-3 md:space-y-4">
             <div>
-              <h3 className="text-lg md:text-xl font-light mb-2 font-heading">{t("email")}</h3>
-              <p className="text-black-600 font-body">Jon.arganaraz@gmail.com</p>
+              <h3 className="text-base md:text-lg font-light mb-2 font-heading">{t("email")}</h3>
+              <p className="text-sm md:text-base text-black-600 font-body">Jon.arganaraz@gmail.com</p>
             </div>
             <div>
-              <h3 className="text-lg md:text-xl font-light mb-2 font-heading">{t("phone")}</h3>
-              <p className="text-black-600 font-body">+310684217382</p>
+              <h3 className="text-base md:text-lg font-light mb-2 font-heading">{t("phone")}</h3>
+              <p className="text-sm md:text-base text-black-600 font-body">+310684217382</p>
             </div>
             <div>
-              <h3 className="text-lg md:text-xl font-light mb-2 font-heading">{t("social_media")}</h3>
+              <h3 className="text-base md:text-lg font-light mb-2 font-heading">{t("social_media")}</h3>
               <div className="flex gap-4 mt-2">
                 <a href="https://www.instagram.com/jon.arganaraz?igsh=MWM5dm1tOTduNmhkbA=="
                   target="_blank"
@@ -40,6 +40,15 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* Sol negro en la esquina inferior derecha */}
+      <div className="absolute bottom-4 right-4 w-20 h-20 md:w-24 md:h-24">
+        <img
+          src="/sol.png"
+          alt="Sol argentino"
+          className="w-full h-full object-contain"
+          style={{ filter: 'brightness(0)' }}
+        />
       </div>
     </section>
   );
