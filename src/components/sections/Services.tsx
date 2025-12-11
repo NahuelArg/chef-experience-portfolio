@@ -7,7 +7,7 @@ type ServiceProps = {
 
 const LargeService: React.FC<ServiceProps> = ({ title }) => (
     <div className="flex flex-col items-center text-black-800 p-4 w-64">
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-heading mb-3 text-center">{title}</h3>
+        <h3 className="text-xl md:text-2xl lg:text-3xl font-heading text-center">{title}</h3>
     </div>
 );
 

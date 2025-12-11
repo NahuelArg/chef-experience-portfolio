@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
   const { t } = useTranslation();
   return (
     <section className="w-full min-h-screen flex items-start justify-center relative overflow-hidden pt-8 pb-0">
-      <div className="max-w-4xl mx-auto px-4 md:px-6 w-full relative z-10">
+      <div className="max-w-3xl mx-auto px-4 w-full relative z-10">
         <h2 className="text-2xl md:text-3xl font-light mb-4 font-heading">
           {t("contact_title")}
         </h2>
@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Sol negro - centrado verticalmente, derecha, mitad visible */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-64 w-[500px] h-[500px] sm:-right-64 sm:w-[550px] sm:h-[550px] md:-right-72 md:w-[550px] md:h-[550px] lg:-right-0 lg:w-[600px] lg:h-[600px] pointer-events-none">
+      <div className="absolute top-1/2 -translate-y-1/2 -right-64 w-[500px] h-[500px] sm:w-[550px] sm:h-[550px] md:w-[550px] md:h-[550px] lg:w-[600px] lg:h-[600px] pointer-events-none">
         <img
           src="/sol2.png"
           alt="Sol argentino"
