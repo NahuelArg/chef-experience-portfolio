@@ -27,7 +27,7 @@ const Services: React.FC = () => {
     ];
 
     return (
-        <section className="min-h-screen flex flex-col items-center justify-center">
+        <section className="min-h-screen md:min-h-0 flex flex-col items-center justify-center md:py-16">
             <div className="flex flex-col justify-center gap-4 px-4 font-body">
                 {services.map((service, idx) => (
                     <LargeService

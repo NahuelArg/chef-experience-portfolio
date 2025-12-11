@@ -5,7 +5,7 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <section className="w-full min-h-screen flex items-start justify-center relative overflow-hidden pt-8 pb-0">
+    <section className="w-full min-h-screen md:min-h-0 flex items-start justify-center relative overflow-hidden pt-8 md:py-16 pb-0">
       <div className="max-w-3xl mx-auto px-4 w-full relative z-10">
         <h2 className="text-2xl md:text-3xl font-light mb-4 font-heading">
           {t("contact_title")}

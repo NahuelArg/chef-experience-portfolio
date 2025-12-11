@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const DescriptionAbout: React.FC = () => {
     const { t } = useTranslation();
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center">
+        <div className="min-h-screen md:min-h-0 flex flex-col items-center justify-center md:py-12">
             <div className="prose prose-lg max-w-3xl break-words text-center px-4">
                 <p className="text-sm sm:text-base md:text-lg leading-relaxed text-black-700 font-body mb-4 break-words">
                   {t("p1")}
