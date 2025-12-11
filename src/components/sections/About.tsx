@@ -5,11 +5,11 @@ const About: React.FC = () => {
   const { t } = useTranslation();
   
   return (
-    <section className="w-full h-screen flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 pt-8 md:pt-12">
+    <section className="w-full h-screen flex flex-col px-4 md:px-6 pt-8">
       <div className="max-w-6xl mx-auto w-full h-full flex flex-col">
         {/* Header con nombre y tagline */}
-        <div className="mb-4 md:mb-6">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-heading font-light text-left mb-2 md:mb-3">
+        <div className="mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-heading font-light text-left mb-2">
             JON ARGAÑARAZ
           </h1>
           <p className="text-sm md:text-base lg:text-lg text-gray-600 font-body max-w-2xl">

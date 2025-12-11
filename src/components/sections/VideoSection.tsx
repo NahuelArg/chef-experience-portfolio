@@ -5,7 +5,7 @@ interface VideoSectionProps {
 }
 
 const VideoSection: React.FC<VideoSectionProps> = ({ video }) => (
-    <section className="w-full h-screen flex items-center justify-center px-2 sm:px-4 md:px-6">
+    <section className="w-full h-screen flex items-center justify-center px-2 md:px-4">
         <div className="max-w-3xl w-full">
             <video
                 src={video}

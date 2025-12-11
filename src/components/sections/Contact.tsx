@@ -5,13 +5,13 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 const Contact: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <section className="w-full min-h-screen flex items-start justify-center relative overflow-hidden pt-8 md:pt-16 pb-0">
-      <div className="max-w-4xl mx-auto px-4 md:px-8 w-full relative z-10">
-        <h2 className="text-2xl md:text-3xl font-light mb-4 md:mb-6 font-heading">
+    <section className="w-full min-h-screen flex items-start justify-center relative overflow-hidden pt-8 pb-0">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 w-full relative z-10">
+        <h2 className="text-2xl md:text-3xl font-light mb-4 font-heading">
           {t("contact_title")}
         </h2>
-        <div className="grid md:grid-cols-2 gap-4 md:gap-8">
-          <div className="space-y-3 md:space-y-4">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-3">
             <div>
               <h3 className="text-base md:text-lg font-light mb-2 font-heading">
                 {t("email")}
