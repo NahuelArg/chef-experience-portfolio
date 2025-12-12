@@ -33,7 +33,7 @@ function App() {
     { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" /> },
     { component: <ImageDescription description={t("img2_desc")} /> },
     { component: <VideoSection video='https://res.cloudinary.com/dyiiztnx4/video/upload/v1763735240/IMG_4492_1_gkjl9s.mp4'/> },
-    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735239/IMG_4269_dnahpb.jpg" /> },
+    { component: <ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1765553940/WhatsApp_Image_2025-12-06_at_12.42.51_PM_oo6hdq.jpg" /> },
     { component: <ImageDescription description={t("img3_desc")} /> },
     { component: <DescriptionAbout /> },
     { component: <Contact /> },
