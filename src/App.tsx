@@ -74,8 +74,14 @@ function App() {
         rightWidth="50%"
       />
     },
-    { component: <DescriptionAbout /> },
-    { component: <Contact /> },
+    {
+      component: <PairedSection
+        left={<DescriptionAbout />}
+        right={<Contact />}
+        leftWidth="45%"
+        rightWidth="55%"
+      />
+    },
   ];
 
   const sections = isDesktop ? desktopSections : mobileSections;
