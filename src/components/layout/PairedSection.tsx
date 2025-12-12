@@ -14,11 +14,11 @@ const PairedSection: React.FC<PairedSectionProps> = ({
   rightWidth = "50%"
 }) => {
   return (
-    <div className="w-full h-screen flex">
-      <div style={{ width: leftWidth }} className="h-full overflow-hidden">
+    <div className="w-full h-screen md:h-auto flex">
+      <div style={{ width: leftWidth }} className="h-full md:h-auto md:flex md:items-center">
         {left}
       </div>
-      <div style={{ width: rightWidth }} className="h-full overflow-hidden">
+      <div style={{ width: rightWidth }} className="h-full md:h-auto md:flex md:items-center">
         {right}
       </div>
     </div>
