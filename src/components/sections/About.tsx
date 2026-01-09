@@ -9,10 +9,10 @@ const About: React.FC = () => {
       <div className="max-w-4xl mx-auto w-full md:h-auto flex flex-col">
         {/* Header con nombre y tagline */}
         <div className="mb-4">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-heading font-light text-left mb-2">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-heading font-light text-left mb-2">
             JON ARGAÑARAZ
           </h1>
-          <p className="text-sm md:text-base lg:text-lg text-gray-600 font-body max-w-2xl">
+          <p className="text-xs md:text-sm lg:text-base text-gray-600 font-body max-w-2xl">
             {t("p_home")}
           </p>
         </div>
