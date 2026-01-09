@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
       {/* Sol negro - centrado verticalmente, derecha, mitad visible */}
       <div className="absolute top-1/2 -translate-y-1/2 -right-64 md:-right-32 lg:-right-24 w-[500px] h-[500px] sm:w-[550px] sm:h-[550px] md:w-[550px] md:h-[550px] lg:w-[600px] lg:h-[600px] pointer-events-none">
         <img
-          src="/sol2.png"
+          src="/sol.png"
           alt="Sol argentino"
           className="w-full h-full object-contain"
        style={{
