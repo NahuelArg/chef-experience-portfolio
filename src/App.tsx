@@ -39,7 +39,7 @@ function App() {
     { component: <Contact /> },
   ];
 
-  // Desktop sections - 7 slides with paired components
+  // Desktop sections - Asymmetric/staggered layout for minimalist design
   const desktopSections = [
     {
       component: <PairedSection
@@ -53,16 +53,16 @@ function App() {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735236/IMG_4250_jlx4wl.jpg" />}
         right={<ImageDescription description={t("img1_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        leftWidth="35%"
+        rightWidth="65%"
       />
     },
     {
       component: <PairedSection
-        left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" />}
-        right={<ImageDescription description={t("img2_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        left={<ImageDescription description={t("img2_desc")} />}
+        right={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" />}
+        leftWidth="40%"
+        rightWidth="60%"
       />
     },
     { component: <VideoSection video='https://res.cloudinary.com/dyiiztnx4/video/upload/v1763735240/IMG_4492_1_gkjl9s.mp4'/> },
@@ -70,8 +70,8 @@ function App() {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735239/IMG_4269_dnahpb.jpg" />}
         right={<ImageDescription description={t("img3_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        leftWidth="65%"
+        rightWidth="35%"
       />
     },
     {
