@@ -3,9 +3,9 @@
     "Gallery": "Galería",
     "Contact": "Contacto",
     "about_title": "Sobre Mí",
-    "p1": "Jonathan es un chef argentino que comenzó a cocinar a los 17 años y ha trabajado en las mejores cocinas de Argentina, Chile, Perú, España y los Países Bajos. Su experiencia incluye restaurantes con estrellas Michelin y los 50 mejores del mundo, como Disfrutar en Barcelona (Mejor Restaurante del Mundo 2024), Rijks en Ámsterdam y Ambrosía en Santiago.",
-    "p2": "También se ha formado con el mejor chef de Argentina, Javier Rodríguez, y ha trabajado en la reconocida cocina del chef peruano Iván Kisic.",
-    "p3": "En 2019, fue el único finalista argentino en San Pellegrino Young Chef, y luego se convirtió en Chef Ejecutivo en un restaurante Michelin Bib Gourmand, donde perfeccionó su propia identidad culinaria creativa.",
+    "p1": "Comencé a cocinar a los 17 años y he tenido el privilegio de trabajar en las mejores cocinas de Argentina, Chile, Perú, España y los Países Bajos. Mi experiencia incluye restaurantes con estrellas Michelin y algunos de los 50 mejores del mundo, como Disfrutar en Barcelona (Mejor Restaurante del Mundo 2024), Rijks en Ámsterdam y Ambrosía en Santiago.",
+    "p2": "Me he formado con el mejor chef de Argentina, Javier Rodríguez, y he trabajado en la reconocida cocina del chef peruano Iván Kisic.",
+    "p3": "En 2019, fui el único finalista argentino en San Pellegrino Young Chef, y luego me convertí en Chef Ejecutivo en un restaurante Michelin Bib Gourmand, donde perfeccioné mi propia identidad culinaria creativa.",
     "service1": "POP UPS",
     "service2": "CHEF CONSULTOR",
     "service3": "CHEF PRIVADO",
@@ -16,5 +16,8 @@
     "phone": "Teléfono",
     "social_media": "Redes Sociales",
     "Chef_professional": "Chef Profesional",
-    "footer_text": "Todos los derechos reservados."
+    "footer_text": "Todos los derechos reservados.",
+    "img1_desc": "Bacalao cocinado al vacío, emulsión de algas, huevas de trucha y leche de tigre nikkei",
+    "img2_desc": "Carne de res madurada en seco, mantequilla avellana (beurre noisette), crema de yema de huevo, alcaparras al ajo y estragón.",
+    "img3_desc": "Caballa marinada, compota de higo, cebolla encurtida y beurre blanc de azafrán"
 }
