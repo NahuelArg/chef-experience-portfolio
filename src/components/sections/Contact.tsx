@@ -55,15 +55,15 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Sol negro - centrado verticalmente, derecha, mitad visible */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-64 md:-right-32 lg:-right-24 w-[500px] h-[500px] sm:w-[550px] sm:h-[550px] md:w-[550px] md:h-[550px] lg:w-[600px] lg:h-[600px] pointer-events-none">
+      {/* Sol negro - pequeño en esquina inferior derecha */}
+      <div className="absolute bottom-4 md:bottom-6 right-4 md:right-8 w-20 h-20 md:w-28 md:h-28 pointer-events-none">
         <img
           src="/sol2.png"
           alt="Sol argentino"
           className="w-full h-full object-contain"
-       style={{
-  filter: 'brightness(2) contrast(5) saturate(0.3) sepia(0.1) drop-shadow(0.7px 0 0.7px rgba(0, 0, 0, 0.8))',
-}}
+          style={{
+            filter: 'grayscale(100%) brightness(0)',
+          }}
         />
       </div>
     </section>
