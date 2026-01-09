@@ -8,7 +8,7 @@ const ImgSection: React.FC<DishProps> = ({ img }) => {
   const [isLoading, setIsLoading] = useState(true);  // ← DENTRO del componente
 
   return (
-    <section className="w-full h-screen flex items-center justify-center px-2 md:px-4">
+    <section className="w-full h-screen flex items-center justify-center px-1 md:px-2">
       <div className="max-w-3xl w-full h-full flex items-center justify-center relative">
         {isLoading && (
           <div className="absolute inset-0 bg-gray-300 animate-pulse rounded-lg"></div>
@@ -18,7 +18,7 @@ const ImgSection: React.FC<DishProps> = ({ img }) => {
           onLoad={() => setIsLoading(false)}
           alt="Platillo del chef"
           loading="lazy"
-          className={`w-full h-auto max-h-[60vh] object-contain rounded-lg ${
+          className={`w-full h-auto max-h-[30vh] md:max-h-[40vh] object-contain rounded-lg ${
             isLoading ? 'opacity-0' : 'opacity-100'
           } transition-opacity`}
         />

@@ -7,29 +7,29 @@ const Contact: React.FC = () => {
   return (
     <section className="w-full min-h-screen md:min-h-0 flex items-start justify-center relative overflow-hidden pt-8 md:py-16 pb-0">
       <div className="max-w-3xl md:max-w-4xl mx-auto px-4 md:px-8 w-full relative z-10">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light mb-4 md:mb-6 font-heading">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-light mb-4 md:mb-6 font-heading">
           {t("contact_title")}
         </h2>
         <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           <div className="space-y-3 md:space-y-4">
             <div>
-              <h3 className="text-base md:text-lg font-light mb-2 font-heading">
+              <h3 className="text-sm md:text-base font-light mb-2 font-heading">
                 {t("email")}
               </h3>
-              <p className="text-sm md:text-base text-black-600 font-body">
+              <p className="text-xs md:text-sm text-black-600 font-body">
                 Jon.arganaraz@gmail.com
               </p>
             </div>
             <div>
-              <h3 className="text-base md:text-lg font-light mb-2 font-heading">
+              <h3 className="text-sm md:text-base font-light mb-2 font-heading">
                 {t("phone")}
               </h3>
-              <p className="text-sm md:text-base text-black-600 font-body">
+              <p className="text-xs md:text-sm text-black-600 font-body">
                 +310684217382
               </p>
             </div>
             <div>
-              <h3 className="text-base md:text-lg font-light mb-2 font-heading">
+              <h3 className="text-sm md:text-base font-light mb-2 font-heading">
                 {t("social_media")}
               </h3>
               <div className="flex gap-4 mt-2">
@@ -55,15 +55,15 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Sol negro - centrado verticalmente, derecha, mitad visible */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-64 md:-right-32 lg:-right-24 w-[500px] h-[500px] sm:w-[550px] sm:h-[550px] md:w-[550px] md:h-[550px] lg:w-[600px] lg:h-[600px] pointer-events-none">
+      {/* Sol negro - grande, mitad visible en el medio derecho */}
+      <div className="absolute top-1/2 -translate-y-1/2 -right-64 md:-right-80 w-[512px] h-[512px] md:w-[640px] md:h-[640px] pointer-events-none">
         <img
           src="/sol.png"
           alt="Sol argentino"
           className="w-full h-full object-contain"
-       style={{
-  filter: 'brightness(2) contrast(5) saturate(0.3) sepia(0.1) drop-shadow(0.7px 0 0.7px rgba(0, 0, 0, 0.8))',
-}}
+          style={{
+            filter: 'grayscale(100%) brightness(0)',
+          }}
         />
       </div>
     </section>
