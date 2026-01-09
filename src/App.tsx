@@ -39,7 +39,7 @@ function App() {
     { component: <Contact /> },
   ];
 
-  // Desktop sections - 7 slides with paired components
+  // Desktop sections - Varied vertical alignment for minimalist staggered layout
   const desktopSections = [
     {
       component: <PairedSection
@@ -47,6 +47,8 @@ function App() {
         right={<Services />}
         leftWidth="60%"
         rightWidth="40%"
+        leftAlign="center"
+        rightAlign="top"
       />
     },
     {
@@ -55,6 +57,8 @@ function App() {
         right={<ImageDescription description={t("img1_desc")} />}
         leftWidth="50%"
         rightWidth="50%"
+        leftAlign="bottom"
+        rightAlign="top"
       />
     },
     {
@@ -63,6 +67,8 @@ function App() {
         right={<ImageDescription description={t("img2_desc")} />}
         leftWidth="50%"
         rightWidth="50%"
+        leftAlign="top"
+        rightAlign="bottom"
       />
     },
     { component: <VideoSection video='https://res.cloudinary.com/dyiiztnx4/video/upload/v1763735240/IMG_4492_1_gkjl9s.mp4'/> },
@@ -72,6 +78,8 @@ function App() {
         right={<ImageDescription description={t("img3_desc")} />}
         leftWidth="50%"
         rightWidth="50%"
+        leftAlign="center"
+        rightAlign="bottom"
       />
     },
     {
@@ -80,6 +88,8 @@ function App() {
         right={<Contact />}
         leftWidth="45%"
         rightWidth="55%"
+        leftAlign="top"
+        rightAlign="center"
       />
     },
   ];
