@@ -39,36 +39,36 @@ function App() {
     { component: <Contact /> },
   ];
 
-  // Desktop sections - Minimalist non-linear layout with varied sizes and heights
+  // Desktop sections - Minimalist non-linear layout with varied sizes
   const desktopSections = [
     {
       component: <PairedSection
         left={<About />}
         right={<Services />}
-        leftWidth="65%"
-        rightWidth="35%"
+        leftWidth="55%"
+        rightWidth="45%"
         leftAlign="center"
-        rightAlign="top"
+        rightAlign="center"
       />
     },
     {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735236/IMG_4250_jlx4wl.jpg" />}
         right={<ImageDescription description={t("img1_desc")} />}
-        leftWidth="60%"
-        rightWidth="40%"
-        leftAlign="bottom"
-        rightAlign="top"
+        leftWidth="40%"
+        rightWidth="60%"
+        leftAlign="center"
+        rightAlign="center"
       />
     },
     {
       component: <PairedSection
         left={<ImageDescription description={t("img2_desc")} />}
         right={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" />}
-        leftWidth="35%"
-        rightWidth="65%"
-        leftAlign="top"
-        rightAlign="bottom"
+        leftWidth="60%"
+        rightWidth="40%"
+        leftAlign="center"
+        rightAlign="center"
       />
     },
     { component: <VideoSection video='https://res.cloudinary.com/dyiiztnx4/video/upload/v1763735240/IMG_4492_1_gkjl9s.mp4'/> },
@@ -76,9 +76,9 @@ function App() {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735239/IMG_4269_dnahpb.jpg" />}
         right={<ImageDescription description={t("img3_desc")} />}
-        leftWidth="70%"
-        rightWidth="30%"
-        leftAlign="top"
+        leftWidth="30%"
+        rightWidth="70%"
+        leftAlign="center"
         rightAlign="center"
       />
     },
@@ -86,9 +86,9 @@ function App() {
       component: <PairedSection
         left={<DescriptionAbout />}
         right={<Contact />}
-        leftWidth="40%"
-        rightWidth="60%"
-        leftAlign="bottom"
+        leftWidth="45%"
+        rightWidth="55%"
+        leftAlign="center"
         rightAlign="center"
       />
     },

@@ -19,8 +19,8 @@ const PairedSection: React.FC<PairedSectionProps> = ({
 }) => {
   const getAlignClass = (align: 'top' | 'center' | 'bottom') => {
     switch (align) {
-      case 'top': return 'md:items-start md:pt-12';
-      case 'bottom': return 'md:items-end md:pb-12';
+      case 'top': return 'md:items-start';
+      case 'bottom': return 'md:items-end';
       case 'center': return 'md:items-center';
       default: return 'md:items-center';
     }
