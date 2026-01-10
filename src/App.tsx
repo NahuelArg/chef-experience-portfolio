@@ -39,30 +39,36 @@ function App() {
     { component: <Contact /> },
   ];
 
-  // Desktop sections - 7 slides with paired components
+  // Desktop sections - Minimalist non-linear layout with varied sizes and heights
   const desktopSections = [
     {
       component: <PairedSection
         left={<About />}
         right={<Services />}
-        leftWidth="60%"
-        rightWidth="40%"
+        leftWidth="65%"
+        rightWidth="35%"
+        leftAlign="center"
+        rightAlign="top"
       />
     },
     {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735236/IMG_4250_jlx4wl.jpg" />}
         right={<ImageDescription description={t("img1_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        leftWidth="60%"
+        rightWidth="40%"
+        leftAlign="bottom"
+        rightAlign="top"
       />
     },
     {
       component: <PairedSection
-        left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" />}
-        right={<ImageDescription description={t("img2_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        left={<ImageDescription description={t("img2_desc")} />}
+        right={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735242/IMG_4285_dab3gk.jpg" />}
+        leftWidth="35%"
+        rightWidth="65%"
+        leftAlign="top"
+        rightAlign="bottom"
       />
     },
     { component: <VideoSection video='https://res.cloudinary.com/dyiiztnx4/video/upload/v1763735240/IMG_4492_1_gkjl9s.mp4'/> },
@@ -70,16 +76,20 @@ function App() {
       component: <PairedSection
         left={<ImgSection img="https://res.cloudinary.com/dyiiztnx4/image/upload/v1763735239/IMG_4269_dnahpb.jpg" />}
         right={<ImageDescription description={t("img3_desc")} />}
-        leftWidth="50%"
-        rightWidth="50%"
+        leftWidth="70%"
+        rightWidth="30%"
+        leftAlign="top"
+        rightAlign="center"
       />
     },
     {
       component: <PairedSection
         left={<DescriptionAbout />}
         right={<Contact />}
-        leftWidth="45%"
-        rightWidth="55%"
+        leftWidth="40%"
+        rightWidth="60%"
+        leftAlign="bottom"
+        rightAlign="center"
       />
     },
   ];
